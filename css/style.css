@@ -1,0 +1,71 @@
+body{
+  margin: 0px;
+  padding: 0px;
+  overflow-x: hidden;
+}
+
+.navbar {
+  background-color: white !important;
+  font-weight: bold;
+  position: fixed;
+  width: 100%;
+}
+
+main {
+  background-color: gray !important;
+  
+}
+
+main p{
+  color: black !important;
+}
+
+
+h4 {
+  color: white;
+}
+
+p, a {
+  color: gray;
+  text-decoration: none;
+}
+
+body {
+  background-color: gray;
+}
+
+p {
+  margin-bottom: 0;
+}
+
+h2 {
+  font-size: large;
+}
+h1 {
+  font-size: medium;
+}
+
+#mobil {
+  height: 650px;
+}
+
+
+footer {
+  background-color: black !important;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+}
+
+.banner img {
+  height: 600px;
+  width: 100%;
+  object-fit: cover;
+  width: 100vw;
+  height: 100vh;
+}
+
+.button {
+  background-color: transparent;
+}
+

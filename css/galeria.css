@@ -1,0 +1,51 @@
+body{
+    margin: 0px;
+    padding: 0px;
+    overflow-x: hidden;
+  }
+  
+  .navbar {
+    background-color: white !important;
+    font-weight: bold;
+    width: 100%;
+  }
+  
+  main {
+    background-color: gray !important;
+    
+  }
+  
+  main p{
+    color: black !important;
+  }
+  
+  footer {
+    background-color: black !important;
+  }
+  
+  h4 {
+    color: white;
+  }
+  
+  p, a {
+    color: gray;
+    text-decoration: none;
+  }
+  
+  footer {
+    position: relative;
+    bottom: 0;
+    width: 100%;
+  }
+
+ p {
+    margin-bottom: 0;
+ }
+
+.banner img {
+  height: 600px;
+  width: 100%;
+  object-fit: cover;
+  width: 100vw;
+  height: 100vh;
+}
