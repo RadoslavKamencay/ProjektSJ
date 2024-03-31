@@ -9,23 +9,7 @@
   </head>
 <body>
 
-<header class="sticky-top">
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container-fluid">
-            <a href="index.php"><img src="img/apple.png" height="50"></a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-            <ul class="navbar-nav">
-                <a class="nav-link" href="index.php">Domov</a>
-                <a class="nav-link" href="galeria.php">Galéria</a>
-                <a class="nav-link" href="faq.php">FAQ</a>
-                <a class="nav-link" href="kontakt.php">Kontakt</a>
-            </ul>
-        </div>
-    </nav>
-</header>
+<?php include "komponenty/header.php"?>
 
 <div class="banner">
     <img src="img/banner.jpg">
@@ -65,31 +49,7 @@
 </main>
 
 
-<footer>
-        <div class="container text-center-end">
-            <div class="row">
-                <div class="col-md-4 mt-4">
-                    <h4>Kto sme</h4>
-                    <p>Sme značka, ktorá sa sústreďuje nielen na výkon a funkčnosť, ale tiež na eleganciu a štýl, čo sa prejavuje v našich ikonických iPhone zariadeniach.</p>
-                </div>
-                <div class="col-md-4 mt-4">
-                    <h4>Kontakt</h4>
-                    <p><a href="mailto:kontakt@apple.com">kontakt@apple.com</a></p>
-                    <p><a href="tel:0904162468"> 0904 162 468</a></p>
-                </div>
-                <div class="col-md-4 mt-4">
-                    <h4>Odkazy</h4>
-                    <p><a href="index.php">Domov</a></p>
-                    <p><a href="galeria.php">Galéria</a></p>
-                    <p><a href="faq.php">FAQ</a></p>
-                    <p><a href="kontakt.php">Kontakt</a></p>
-                </div>
-            </div>
-            <div class="copyright text-center">
-                <p>© 2023 O2 Slovakia, s.r.o. Všetky práva vyhradené</p>
-            </div>
-        </div>
-</footer>
+<?php include "komponenty/footer.php"?>
 
     
 
