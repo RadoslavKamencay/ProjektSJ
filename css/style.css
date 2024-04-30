@@ -68,4 +68,110 @@ footer {
 .button {
   background-color: transparent;
 }
+/* index.php */
+body.dark-mode {
+  background-color: #333;
+  color: #fff;
+}
 
+.dark-mode .navbar {
+  background-color: #333 !important;
+  color: #fff !important;
+}
+
+.dark-mode .nav-link {
+  color: #fff !important;
+}
+#dark-mode-toggle {
+background-color: #555;
+color: #fff;
+border: 1px solid #555;
+border-radius: 5px;
+padding: 8px 16px;
+cursor: pointer;
+}
+
+#dark-mode-toggle:hover {
+background-color: #555;
+}
+
+#myButton {
+  background-color: #555 !important;
+  color: #fff !important;
+  border: 1px solid #555 !important;
+  border-radius: 5px;
+  padding: 8px 16px;
+  cursor: pointer;
+}
+
+#myButton:hover {
+  background-color: #555 !important;
+}
+
+/* Galeria */
+.dark-mode main {
+  background-color: #333 !important;
+}
+
+.dark-mode p {
+  color: #fff !important;
+}
+
+.dark-mode .ktosme {
+  color: gray !important;
+}
+.dark-mode .copyright {
+  color: gray !important;
+}
+
+/* FAQ */
+.dark-mode .odpoved {
+  color: gray !important;
+}
+
+/* Kontakt */
+.dark-mode .accordion-item {
+  background-color: #333; 
+  border-color: #555; 
+  color: #fff;
+}
+
+.dark-mode .accordion-button {
+  background-color: #444; 
+  color: #fff; 
+}
+
+.dark-mode .accordion-button:not(.collapsed) {
+  background-color: #555; 
+}
+
+.dark-mode .accordion-body {
+  background-color: #222; 
+  color: #fff; 
+}
+
+/*Registracia prihlasenie*/
+.registracia {
+    background-color: #555 !important;
+    color: #fff !important;
+    border: 1px solid #555 !important;
+    border-radius: 5px;
+    padding: 8px 16px;
+    cursor: pointer;
+}
+
+.prihlasenie {
+  margin: 0 10px;
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  text-decoration: none;
+  color: #333;
+  background-color: #fff;
+}
+
+.dark-mode .prihlasenie {
+  color: #fff; 
+  background-color: #555;
+  border-color: #555; 
+}

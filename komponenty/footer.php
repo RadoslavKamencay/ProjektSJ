@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-md-4 mt-4">
                 <h4>Kto sme</h4>
-                <p>Sme značka, ktorá sa sústreďuje nielen na výkon a funkčnosť, ale tiež na eleganciu a štýl, čo sa prejavuje v našich ikonických iPhone zariadeniach.</p>
+                <p class="ktosme">Sme značka, ktorá sa sústreďuje nielen na výkon a funkčnosť, ale tiež na eleganciu a štýl, čo sa prejavuje v našich ikonických iPhone zariadeniach.</p>
             </div>
             <div class="col-md-4 mt-4">
                 <h4>Kontakt</h4>
@@ -18,8 +18,8 @@
                 <p><a href="kontakt.php">Kontakt</a></p>
             </div>
         </div>
-        <div class="copyright text-center">
-            <p>© 2023 O2 Slovakia, s.r.o. Všetky práva vyhradené</p>
-        </div>
+    </div>
+    <div class="copyright text-center">
+        <p class="copyright">© 2023 O2 Slovakia, s.r.o. Všetky práva vyhradené</p>
     </div>
 </footer>

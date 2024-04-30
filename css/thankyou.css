@@ -1,51 +1,9 @@
-body{
-    margin: 0px;
-    padding: 0px;
-    overflow-x: hidden;
-  }
-  
-  .navbar {
-    background-color: white !important;
-    font-weight: bold;
-  }
-  
-  main {
-    background-color: gray !important;
-    
-  }
-  
-  main p{
-    color: black !important;
-  }
-  
-  footer {
-    background-color: black !important;
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-  }
-  
-  h4 {
-    color: white;
-  }
-  
-  p, a {
-    color: gray;
-    text-decoration: none;
-  }
-  
-  body {
-    background-color: gray;
-  }
-  
-  p {
-    margin-bottom: 0;
-  }
-  
-  h2 {
-    font-size: large;
-  }
-  h1 {
-    font-size: larger;
-  }
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: white;
+  padding: 20px;
+  color: black;
+}
 
