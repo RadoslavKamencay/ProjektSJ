@@ -3,59 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
     <title>Registrácia</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
-        form {
-            width: 300px;
-        }
-        input[type="text"], input[type="password"], input[type="email"], input[type="submit"] {
-            width: 100%;
-            padding: 10px;
-            margin-top: 5px;
-            margin-bottom: 10px;
-            box-sizing: border-box;
-        }
-        input[type="submit"] {
-            background-color: black;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
-        input[type="submit"]:hover {
-            background-color: #45a049;
-        }
-
-        p {
-            text-align: center;
-        }
-        a {
-            color: black;
-            font-weight: bold;
-        }
-        h2 {
-            text-align: center;
-        }
-    </style>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <div>
-        <form action="proces_registracie.php" method="post">
-            <h2>Registrácia</h2>
-            <input type="text" name="meno" placeholder="Meno" required>
-            <input type="email" name="email" placeholder="E-mail" required>
-            <input type="password" name="heslo" placeholder="Heslo" required>
-            <input type="submit" value="Registrovať sa">
-        </form>
-        <p>Ste už registrovaný? <a href="prihlasenie.php">Prihlásiť sa</a></p>
+    <?php $page = "registracia.php"; include "komponenty/header.php"; ?>
+
+    <div class="container">
+        <div class="row justify-content-center mt-5">
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col">
+                        <form action="classes/registracia.php" method="post" class="border p-4 rounded-3 mb-4">
+                        <h2 class="mb-4">Registrácia</h2>
+                        <div class="mb-3">
+                            <input type="text" class="form-control" name="meno" placeholder="Meno" required>
+                        </div>
+                        <div class="mb-3">
+                            <input type="email" class="form-control" name="email" placeholder="E-mail" required>
+                        </div>
+                        <div class="mb-3">
+                            <input type="password" class="form-control" name="heslo" placeholder="Heslo" required>
+                        </div>
+                        <div class="d-grid">
+                            <input type="submit" class="btn btn-primary btn-lg" name="submit" value="Registrovať sa">
+                        </div>
+                    </form>
+                    </div>
+                    <div class="col">
+                        <form action="proces_prihlasenia.php" method="post" class="border p-4 rounded-3 mb-4">
+                            <h2 class="mb-4">Prihlásenie</h2>
+                            <div class="mb-3">
+                                <input type="text" class="form-control" name="meno" placeholder="Meno" required>
+                            </div>
+                            <div class="mb-3">
+                                <input type="password" class="form-control" name="heslo" placeholder="Heslo" required>
+                            </div>
+                            <div class="d-grid">
+                                <input type="submit" name="submit" class="btn btn-primary btn-lg" value="Prihlásiť sa">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+
+    <?php include "komponenty/footer.php"; ?>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
 </html>

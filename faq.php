@@ -10,7 +10,7 @@
   </head>
 <body>
 
-<?php include "komponenty/header.php"?>
+<?php $page = "faq.php"; include "komponenty/header.php";?>
 
 <div class="banner">
     <img src="img/banner.jpg">

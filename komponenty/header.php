@@ -1,5 +1,5 @@
-<header>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+<header class ="pb-5">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary  <?php if ($page == 'registracia.php') echo 'fixed-top' ?>">
         <div class="container-fluid">
             <a href="index.php"><img src="img/apple2.png" height="50"></a>
             <button id="dark-mode-toggle">Dark Mode</button>
@@ -13,7 +13,6 @@
             </div>
             <ul class="navbar-nav">
                 <a class="registracia" href="registracia.php">Registrácia</a>
-                <a class="prihlasenie" href="prihlasenie.php">Prihlásenie</a>
                 <a class="nav-link" href="index.php">Domov</a>
                 <a class="nav-link" href="galeria.php">Galéria</a>
                 <a class="nav-link" href="faq.php">FAQ</a>

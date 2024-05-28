@@ -1,13 +1,13 @@
 <?php
-// Připojení k databázi
+// Pripojenie
 try {
-    $db = new PDO('mysql:host=localhost;dbname=vaše_databáze', 'vaše_uživatelské_jméno', 'vaše_heslo');
+    $db = new PDO('mysql:host=localhost;dbname=vaše_databáze', 'admin', '123');
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } catch (PDOException $e) {
-    die("Nelze se připojit k databázi: " . $e->getMessage());
+    die("Neda sa pripojiť k databaze " . $e->getMessage());
 }
 
-// Create - Vytvoření nového uživatele
+// Create 
 function createUser($meno, $heslo, $email) {
     global $db;
     $hashedPassword = password_hash($heslo, PASSWORD_DEFAULT); // Hašování hesla
@@ -18,7 +18,7 @@ function createUser($meno, $heslo, $email) {
     $stmt->execute();
 }
 
-// Read - Načtení informací o uživateli
+// Read 
 function getUser($id) {
     global $db;
     $stmt = $db->prepare("SELECT * FROM users WHERE id = :id");
@@ -27,7 +27,7 @@ function getUser($id) {
     return $stmt->fetch(PDO::FETCH_ASSOC);
 }
 
-// Update - Aktualizace informací o uživateli
+// Update 
 function updateUser($id, $meno, $heslo, $email) {
     global $db;
     $hashedPassword = password_hash($heslo, PASSWORD_DEFAULT); // Hašování hesla
@@ -39,7 +39,7 @@ function updateUser($id, $meno, $heslo, $email) {
     $stmt->execute();
 }
 
-// Delete - Smazání uživatele
+// Delete 
 function deleteUser($id) {
     global $db;
     $stmt = $db->prepare("DELETE FROM users WHERE id = :id");

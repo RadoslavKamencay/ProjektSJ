@@ -9,13 +9,17 @@
 </head>
 <body>
 
-<?php include "komponenty/header.php"?>
-
+<?php
+include "komponenty/header.php"
+?>
 <div class="banner">
     <img src="img/banner.jpg" alt="">
 </div>
 
-
+<?php
+    include_once "db/functions.php";
+    pridajPozdrav();
+?>
 <div class="row">
     <div class="col-4 justify-content-center align-items-center d-flex">
         <div>
