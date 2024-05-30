@@ -1,59 +1,82 @@
-<?php
-// Pripojenie
-try {
-    $db = new PDO('mysql:host=localhost;dbname=vaše_databáze', 'admin', '123');
-    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-    die("Neda sa pripojiť k databaze " . $e->getMessage());
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <?php
+    include "komponenty/header.php";
 
-// Create 
-function createUser($meno, $heslo, $email) {
-    global $db;
-    $hashedPassword = password_hash($heslo, PASSWORD_DEFAULT); // Hašování hesla
-    $stmt = $db->prepare("INSERT INTO users (meno, heslo, email) VALUES (:meno, :heslo, :email)");
-    $stmt->bindParam(':meno', $meno);
-    $stmt->bindParam(':heslo', $hashedPassword);
-    $stmt->bindParam(':email', $email);
-    $stmt->execute();
-}
+    if (!isset($_SESSION['user']) || !isset($_SESSION['user_admin']) || $_SESSION['user_admin'] == false) {
+        header("location: ./index.php?error=not-logged-or-admin");
+        exit();
+    } 
 
-// Read 
-function getUser($id) {
-    global $db;
-    $stmt = $db->prepare("SELECT * FROM users WHERE id = :id");
-    $stmt->bindParam(':id', $id);
-    $stmt->execute();
-    return $stmt->fetch(PDO::FETCH_ASSOC);
-}
+    include "db/database.php";
 
-// Update 
-function updateUser($id, $meno, $heslo, $email) {
-    global $db;
-    $hashedPassword = password_hash($heslo, PASSWORD_DEFAULT); // Hašování hesla
-    $stmt = $db->prepare("UPDATE users SET meno = :meno, heslo = :heslo, email = :email WHERE id = :id");
-    $stmt->bindParam(':meno', $meno);
-    $stmt->bindParam(':heslo', $hashedPassword);
-    $stmt->bindParam(':email', $email);
-    $stmt->bindParam(':id', $id);
-    $stmt->execute();
-}
+    class Users extends Dbh {
+        public function getUsers() {
 
-// Delete 
-function deleteUser($id) {
-    global $db;
-    $stmt = $db->prepare("DELETE FROM users WHERE id = :id");
-    $stmt->bindParam(':id', $id);
-    $stmt->execute();
-}
+            $stmt = $this->connect()->prepare('SELECT * FROM users');
+            $stmt->execute();
 
-// Použití funkcí
-//createUser('John', 'heslo123', 'john@example.com');
+            return $stmt->fetchAll();
+        }
+    }
 
-//$user = getUser(1);
-//echo "ID: " . $user['id'] . ", Jméno: " . $user['meno'] . ", Email: " . $user['email'];
-
-//updateUser(1, 'John Smith', 'newpassword', 'john@example.com');
-
-//deleteUser(1);
+    $users = new Users();
 ?>
+    <div class="banner">
+        <img src="img/banner.jpg" alt="">
+    </div>
+
+    <?php
+        include_once "db/functions.php";
+        pridajPozdrav();
+    ?>
+    <div class="row">
+        <div class="col-4 justify-content-center align-items-center d-flex">
+            <div>
+                <table class="table">
+                    <thead>
+                        <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Meno</th>
+                        <th scope="col">E-Mail</th>
+                        <th scope="col">Admin</th>
+                        <th scope="col">Akcia</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <?php
+                        foreach ($users->getUsers() as $row) {
+                            echo('
+                            <tr>
+                            <th scope="row">'.$row['id'].'</th>
+                            <td>'.$row['meno'].'</td>
+                            <td>'.$row['email'].'</td>
+                            <td>'.($row['admin'] == 1 ? 'Áno' : 'Nie').'</td>
+                            <td>Tlacitka na akcie..</td>
+                            </tr>
+                            ');
+                        }    
+                    ?>
+                    </tbody>
+                </table>
+            </div>      
+        </div>
+        <div class="col-8">
+            <div id="mobil" class="d-flex justify-content-end align-items-center">
+                <img src="img/obrazok4.png" alt="">
+            </div>
+        </div>
+    </div>
+
+    <?php include "komponenty/footer.php"?>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</body>
+</html>

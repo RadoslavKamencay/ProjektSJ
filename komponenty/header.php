@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <header class ="pb-5">
     <nav class="navbar navbar-expand-lg bg-body-tertiary  <?php if ($page == 'registracia.php') echo 'fixed-top' ?>">
         <div class="container-fluid">
@@ -12,7 +15,16 @@
                     <button id="myButton">Alert</button>
             </div>
             <ul class="navbar-nav">
-                <a class="registracia" href="registracia.php">Registrácia</a>
+            
+                <?php
+                if (isset($_SESSION['user']))
+                {
+                    echo('<a class="registracia" href="classes/logout.php">Odhlásiť '.$_SESSION['user'].'</a>');
+                } else {
+                    echo('<a class="registracia" href="registracia.php">Registrácia</a>');
+                } 
+                ?>
+                
                 <a class="nav-link" href="index.php">Domov</a>
                 <a class="nav-link" href="galeria.php">Galéria</a>
                 <a class="nav-link" href="faq.php">FAQ</a>

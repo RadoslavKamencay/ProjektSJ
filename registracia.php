@@ -32,10 +32,10 @@
                     </form>
                     </div>
                     <div class="col">
-                        <form action="proces_prihlasenia.php" method="post" class="border p-4 rounded-3 mb-4">
+                        <form action="classes/prihlasenie.php" method="post" class="border p-4 rounded-3 mb-4">
                             <h2 class="mb-4">Prihlásenie</h2>
                             <div class="mb-3">
-                                <input type="text" class="form-control" name="meno" placeholder="Meno" required>
+                                <input type="email" class="form-control" name="email" placeholder="E-Mail" required>
                             </div>
                             <div class="mb-3">
                                 <input type="password" class="form-control" name="heslo" placeholder="Heslo" required>

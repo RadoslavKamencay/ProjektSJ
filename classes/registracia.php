@@ -18,7 +18,7 @@ if (isset($_POST['submit'])) {
                 header("location: ../registracia.php?reg_error=stmtfailed");
                 exit();
             } else {
-                header("location: ../index.php?success=true");
+                header("location: ../registracia.php?success=true");
             }
 
             $stmt = null;
