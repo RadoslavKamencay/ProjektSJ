@@ -9,9 +9,8 @@
 </head>
 <body>
 
-<?php
-include "komponenty/header.php"
-?>
+<?php include "komponenty/header.php" ?>
+
 <div class="banner">
     <img src="img/banner.jpg" alt="">
 </div>
@@ -28,7 +27,7 @@ include "komponenty/header.php"
     </div>
     <div class="col-8">
         <div id="mobil" class="d-flex justify-content-end align-items-center">
-            <img src="img/obrazok4.png" alt="">
+            <img class="iphone" src="img/obrazok4.png" alt="">
         </div>
     </div>
 </div>

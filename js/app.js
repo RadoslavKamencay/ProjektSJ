@@ -4,11 +4,11 @@ document.getElementById("myButton").addEventListener("click", function() {
 });
 
 // Dark Mode
-const darkModeToggle = document.getElementById('dark-mode-toggle');
-const body = document.body;
+// const darkModeToggle = document.getElementById('dark-mode-toggle');
+// const body = document.body;
 
-darkModeToggle.addEventListener('click', () => {
-    console.log('dark mode toggle clicked');
-    body.classList.toggle('dark-mode');
-});
+// darkModeToggle.addEventListener('click', () => {
+//     console.log('dark mode toggle clicked');
+//     body.classList.toggle('dark-mode');
+// });
 

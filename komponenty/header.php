@@ -2,7 +2,7 @@
 session_start();
 ?>
 <header class ="pb-5">
-    <nav class="navbar navbar-expand-lg bg-body-tertiary  <?php if ($page == 'registracia.php') echo 'fixed-top' ?>">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary <?php if ($page = 'registracia.php') echo 'fixed-top' ?>">
         <div class="container-fluid">
             <a href="index.php"><img src="img/apple2.png" height="50"></a>
             <button id="dark-mode-toggle">Dark Mode</button>
@@ -17,9 +17,16 @@ session_start();
             <ul class="navbar-nav">
             
                 <?php
-                if (isset($_SESSION['user']))
-                {
-                    echo('<a class="registracia" href="classes/logout.php">Odhlásiť '.$_SESSION['user'].'</a>');
+                if (isset($_SESSION['user'])) {
+                    echo('
+                        <form action="useraction.php" method="post"">
+                            <input type="hidden" name="action" value="logout">
+                            <input type="submit" class="registracia" value="Odhlásiť ['.$_SESSION['user'].']">
+                        </form>
+                    ');
+                    if (isset($_SESSION['user_admin']) && $_SESSION['user_admin'] == true) {
+                        echo('<a class="nav-link" href="users.php">Užívatelia</a>');
+                    }
                 } else {
                     echo('<a class="registracia" href="registracia.php">Registrácia</a>');
                 } 

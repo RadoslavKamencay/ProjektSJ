@@ -76,13 +76,13 @@ body.dark-mode {
 }
 
 .dark-mode .navbar {
-  background-color: #333 !important;
-  color: #fff !important;
+  background-color: #222 !important;
 }
 
 .dark-mode .nav-link {
   color: #fff !important;
 }
+
 #dark-mode-toggle {
 background-color: #555;
 color: #fff;
@@ -159,6 +159,7 @@ background-color: #555;
     border-radius: 5px;
     padding: 8px 16px;
     cursor: pointer;
+    width: auto;
 }
 
 .prihlasenie {
@@ -173,7 +174,7 @@ background-color: #555;
 
 .dark-mode .prihlasenie {
   color: #fff; 
-  background-color: #555;
+  background-color: #222;
   border-color: #555; 
 }
 
@@ -183,3 +184,12 @@ h3 {
   align-items: center;
   padding: 2%;
 }
+
+@media only screen and (max-width: 620px) {
+  .iphone {
+    height: clamp(245px, 10vw, 180px);
+    width: clamp(1019px, 10vw, 954px);
+    display: block;
+  }
+}
+

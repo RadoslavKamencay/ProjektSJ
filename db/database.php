@@ -1,6 +1,6 @@
 <?php
 // Prepojenie s databázou
-class Dbh {
+class DB {
     public function connect() {
 
         $host = "localhost";
@@ -19,9 +19,9 @@ class Dbh {
         try {
             $pdo = new PDO($dsn, $user, $pwd, $opt);
         } catch (PDOException $ex) {
-            die("Error establishing a database connection: ".$ex->getMessage());
+            die("Chyba nadviazania spojenia s databázou: ".$ex->getMessage());
         } catch (Exception $ex) {
-            die("Error establishing a database connection: ".$ex->getMessage());
+            die("Chyba nadviazania spojenia s databázou: ".$ex->getMessage());
         }     
     
         return $pdo;
