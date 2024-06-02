@@ -22,11 +22,8 @@ function checkName($name) {
     if (strlen($name) > 40)
         return 'Meno musí byť kratšie ako 40 znakov!';
 
-    if (preg_match('@[^\w]@', $name))
+    if (preg_match('@[^\w\s]@', $name))
         return 'Meno nesmie obsahovať symbol!';
-    
-    if (str_contains($name, " "))
-        return 'Meno nesmie obsahovať medzeru!';
 
     return null;
 }
@@ -43,7 +40,14 @@ function checkEmail($email) {
     return null;
 }
 
-function checkPass($pass, $confirmPass) {
+function checkPass($pass, $confirmPass, $form = 0) {
+
+    // form = 0 - register
+    // form = 1 - create user by admin
+    // form = 2 - edit user by admin
+
+    if ($form == 2 && !$pass)
+        return null;
 
     if (strlen($pass) < 8)
         return 'Heslo musí byť dlhšie ako 8 znakov!';
@@ -63,7 +67,7 @@ function checkPass($pass, $confirmPass) {
     if (!preg_match('@[^\w]@', $pass))
         return 'Heslo musí obsahovať aspoň jeden symbol!';
 
-    if ($pass != $confirmPass)
+    if ($form == 0 && $pass != $confirmPass)
         return 'Heslo a potvrdenie hesla sa nezhodujú!';
 
     return null;
@@ -72,10 +76,11 @@ function checkPass($pass, $confirmPass) {
 $idCheck = checkId($_POST['id']);
 $nameCheck = checkName($_POST['name']);
 $emailCheck = checkEmail($_POST['email']);
-$passCheck = checkPass($_POST['pass'], $_POST['confirm_pass']);
 
 switch ($_POST['action']) {
     case 'register': {
+
+        $passCheck = checkPass($_POST['pass'], $_POST['confirm_pass'], 0);
 
         if ($nameCheck !== null) {
             header('location: registracia.php?error='.$nameCheck);
@@ -112,55 +117,48 @@ switch ($_POST['action']) {
     }
     case 'create': {
 
+        $passCheck = checkPass($_POST['pass'], $_POST['confirm_pass'], 1);
+
         if ($nameCheck !== null) {
-            header('location: create.php?error='.$nameCheck);
+            header('location: createuser.php?error='.$nameCheck);
             exit();
         }
         if ($emailCheck !== null) {
-            header('location: create.php?error='.$emailCheck);
+            header('location: createuser.php?error='.$emailCheck);
             exit();
         }
         if ($passCheck !== null) {
-            header('location: create.php?error='.$passCheck);
+            header('location: createuser.php?error='.$passCheck);
             exit();
         }
 
         $user = new User();
-        $user->create($_POST['email'], $_POST['pass'], $_POST['name'], ($_POST['admin'] == '1'), false);
+        $user->create($_POST['email'], $_POST['pass'], $_POST['name'], ($_POST['admin'] == 'on'), false);
         break;
     }
     case 'update': {
 
+        $passCheck = checkPass($_POST['pass'], $_POST['confirm_pass'], 2);
+
         if ($idCheck !== null) {
-            header('location: create.php?error='.$idCheck);
+            header('location: edituser.php?error='.$idCheck.'&id='.$_POST['id']);
             exit();
         }
         if ($nameCheck !== null) {
-            header('location: create.php?error='.$nameCheck);
+            header('location: edituser.php?error='.$nameCheck.'&id='.$_POST['id']);
             exit();
         }
         if ($emailCheck !== null) {
-            header('location: create.php?error='.$emailCheck);
+            header('location: edituser.php?error='.$emailCheck.'&id='.$_POST['id']);
             exit();
         }
         if ($passCheck !== null) {
-            header('location: create.php?error='.$passCheck);
+            header('location: edituser.php?error='.$passCheck.'&id='.$_POST['id']);
             exit();
         }
 
         $user = new User();
-        $user->update($_POST['id'], $_POST['email'], $_POST['pass'], $_POST['name'], ($_POST['admin'] == '1'));
-        break;
-    }
-    case 'edit': {
-
-        if ($idCheck !== null) {
-            header('location: users.php?error='.$idCheck);
-            exit();
-        }
-
-        header('location: edit.php?id='.$_POST['id']);
-        exit();
+        $user->update($_POST['id'], $_POST['email'], $_POST['pass'], $_POST['name'], ($_POST['admin'] == 'on'));
         break;
     }
     case 'delete': {
@@ -173,5 +171,8 @@ switch ($_POST['action']) {
         $user = new User();
         $user->delete($_POST['id']);
         break;
+    }
+    default: {
+        die('Neznama akcia');
     }
 }

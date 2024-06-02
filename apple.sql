@@ -3,7 +3,11 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hostiteľ: 127.0.0.1:3306
+<<<<<<< HEAD
 -- Čas generovania: Sun 02.Máj 2024, 19:32
+=======
+-- Čas generovania: Sun 02.Jún 2024, 19:32
+>>>>>>> 5b2e1d8143caa5beec2702ea2ae26562f5341d40
 -- Verzia serveru: 10.4.32-MariaDB
 -- Verzia PHP: 8.2.12
 

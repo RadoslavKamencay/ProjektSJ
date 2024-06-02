@@ -87,7 +87,7 @@ class User extends DB {
         $hashedPass = password_hash($pass, PASSWORD_DEFAULT);
 
         $stmt = $this->connect()->prepare('UPDATE users SET meno = ?, heslo = ?, email = ?, admin = ? WHERE id = ?');
-        if (!$stmt->execute([$meno, $hashedPass, $email, ($admin ? 1 : 0), $id])) {
+        if (!$stmt->execute([$name, $hashedPass, $email, ($admin ? 1 : 0), $id])) {
             header("location: users.php?error=update_failed");
             exit();
         } else {
@@ -108,7 +108,14 @@ class User extends DB {
     }
     
     // Výpis pre admina
-    public function getUsers() {
+
+    public function get($id) {
+        $stmt = $this->connect()->prepare('SELECT * FROM users WHERE id = ?');
+        $stmt->execute([$id]);
+        return $stmt->fetch();
+    }
+
+    public function list() {
         $stmt = $this->connect()->prepare('SELECT * FROM users');
         $stmt->execute();
         return $stmt->fetchAll();
