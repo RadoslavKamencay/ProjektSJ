@@ -23,9 +23,9 @@
     pridajPozdrav();
 
 ?>
-
-<a class="btn btn-primary justify-content-center align-items-center" href="createuser.php" role="button">Vytvoriť užívatela</a>
-
+    <div class="text-center">
+        <a class="btn btn-primary" href="createuser.php" role="button">Vytvoriť užívatela</a>
+    </div>
     <div class="row">
         <div class="justify-content-center align-items-center d-flex">
             <div>
@@ -66,7 +66,6 @@
             </div>
         </div>
     </div>
-    <a class="btn btn-primary justify-content-center align-items-center" href="createuser.php" role="button">Vytvoriť užívatela</a>
     <?php
     
 // kod ziska nazov aktualneho php suboru a ulozi ho do premennej $page
