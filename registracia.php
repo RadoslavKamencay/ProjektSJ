@@ -52,6 +52,10 @@
                             </div>
                         </form>
                     </div>
+                    <?php if (isset($_GET['error'])) {
+                            echo '<div class="alert text-center" role="alert">' . $_GET['error'] . '</div>';
+                        }
+                    ?>
                 </div>
             </div>
         </div>

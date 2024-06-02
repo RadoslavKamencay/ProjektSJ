@@ -16,18 +16,18 @@ class User extends DB {
                 $_SESSION['user_admin'] = ($row['admin'] == 1);
 
                 if ($row['admin'] == 1) {
-                    header("location: users.php?error=false");
+                    header("location: users.php?Prihlasenie prebehlo úspešne");
                     exit();
                 } else {
-                    header("location: index.php?error=false");
+                    header("location: index.php?Prihlasenie prebehlo úspešne");
                     exit();
                 }
             } else {
-                header("location: registracia.php?error=bad_pass");
+                header("location: registracia.php?error=Zadal si zlé heslo");
                 exit();
             }    
         } else {
-            header("location: registracia.php?error=not_found");
+            header("location: registracia.php?error=Email nebol nájdený");
             exit();
         }    
     }
@@ -48,10 +48,10 @@ class User extends DB {
         $stmt->execute([$email]);
         if ($stmt->fetch()) {
             if ($register) {
-                header("location: registracia.php?error=email_exists");
+                header("location: registracia.php?error=Email už existuje");
                 exit();
             }
-            header("location: users.php?error=email_exists");
+            header("location: users.php?error=Email už existuje");
             exit();
         }
 
@@ -67,10 +67,10 @@ class User extends DB {
             exit();
         } else {
             if ($register) {
-                header("location: index.php?error=false");
+                header("location: registracia.php?Registracia prebehla úspešne");
                 exit();
             }
-            header("location: users.php?error=false");
+            header("location: users.php?Registracia prebehla úspešne");
             exit();
         }
     }
@@ -80,7 +80,7 @@ class User extends DB {
         $stmt = $this->connect()->prepare('SELECT * FROM users WHERE email = ? AND id != ?');
         $stmt->execute([$email, $id]);
         if ($stmt->fetch()) {
-            header("location: users.php?error=email_exists");
+            header("location: users.php?error=Email už existuje");
             exit();
         }
         
@@ -111,7 +111,7 @@ class User extends DB {
     public function getUsers() {
         $stmt = $this->connect()->prepare('SELECT * FROM users');
         $stmt->execute();
-        return $stmt->fetchAll();   // Výpis pre admina
+        return $stmt->fetchAll();
     }
 
 }

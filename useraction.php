@@ -22,9 +22,6 @@ function checkName($name) {
     if (strlen($name) > 40)
         return 'Meno musí byť kratšie ako 40 znakov!';
 
-    if (preg_match('@[0-9]@', $name))
-        return 'Meno nesmie obsahovať číslo!';
-
     if (preg_match('@[^\w]@', $name))
         return 'Meno nesmie obsahovať symbol!';
     
@@ -37,28 +34,19 @@ function checkName($name) {
 
 function checkEmail($email) {
 
-    if (strlen($email) < 7) // xy@z.ab
-        return 'Email musí byť dlhší ako 7 znakov!';
-
-    if (strlen($email) > 25)
-        return 'Email musí byť kratší ako 25 znakov!';
-        
-    if (!str_contains($email, "@"))
-        return 'Email musí obsahovať znak "@"!';
-
-    if (!str_contains($email, "."))
-        return 'Email musí obsahovať znak "."!';
+    if (!str_contains($email, "@gmail.com"))
+        return 'Email musí obsahovať @gmail.com!';
 
     if (str_contains($email, " "))
         return 'Email nesmie obsahovať medzeru!';
-
+    
     return null;
 }
 
 function checkPass($pass, $confirmPass) {
 
-    if (strlen($pass) < 7)
-        return 'Heslo musí byť dlhé ako 7 znakov!';
+    if (strlen($pass) < 8)
+        return 'Heslo musí byť dlhšie ako 8 znakov!';
 
     if (strlen($pass) > 100)
         return 'Heslo musí byť kratšie ako 100 znakov!';
